@@ -6,7 +6,7 @@ A reusable [Slidev](https://sli.dev) theme matched to the "November All Hands" C
 slide-decks/
 ├── theme/              # the theme (layouts, components, styles)
 ├── template/slides.md  # starter deck that shows every layout
-├── vercel.json         # Vercel build settings (builds every deck)
+├── .github/workflows/  # builds every deck and publishes to GitHub Pages
 ├── decks/              # your presentations, one folder each
 └── scripts/new-deck.mjs
 ```
@@ -30,21 +30,20 @@ npx slidev export decks/november-all-hands/slides.md --format pptx         # Pow
 
 To preview the template itself: `npx slidev template/slides.md --open`.
 
-## Publishing (Vercel)
+## Publishing (GitHub Pages)
 
-The repo is connected to Vercel. Every push to `main` builds all decks in `decks/` (`npm run build:all`, settings in `vercel.json`) and deploys them:
+Every push to `main` builds all decks in `decks/` and publishes them to the `gh-pages` branch, which GitHub Pages serves:
 
-- Index of all decks: `https://<project>.vercel.app/`
-- One deck: `https://<project>.vercel.app/<deck-name>/` (slide 5: `…/<deck-name>/#/5`)
+- Index of all decks: https://indraardiansah.github.io/slide-decks/
+- One deck: `https://indraardiansah.github.io/slide-decks/<deck-name>/` (slide 5: `…/<deck-name>/#/5`)
 
-Decks stay interactive (buttons, simulations, animations). Pushes to other branches get their own preview URL. To leave a deck off the site, add `hidden: true` to its first slide's frontmatter.
+Decks stay interactive (buttons, simulations, animations). Deploys take 1–2 minutes; watch them under the repo's Actions tab. To leave a deck off the site, add `hidden: true` to its first slide's frontmatter.
 
-Build the site locally, the same way Vercel does:
+Build the site locally, the same way CI does:
 
 ```bash
-npm run build:all                             # all decks into dist/
+BASE_PATH=/slide-decks/ npm run build:all     # all decks into dist/
 npm run build:all -- api-separation-proposal  # just one deck
-npx serve dist                                # preview at http://localhost:3000
 ```
 
 Requires Node 22+.
