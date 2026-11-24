@@ -1,0 +1,21 @@
+{
+  "name": "slide-decks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "new": "node scripts/new-deck.mjs",
+    "build:all": "node scripts/build-all.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "53.1.0",
+    "@slidev/theme-default": "0.25.0",
+    "motion": "14.9.1",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.50.0"
+  }
+}

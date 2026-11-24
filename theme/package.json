@@ -1,0 +1,34 @@
+{
+  "name": "slidev-theme-aio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Appliance.io Slidev theme, matched to the All Hands Canva deck",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "slidev": ">=52.0.0"
+  },
+  "slidev": {
+    "colorSchema": "light",
+    "highlighter": "shiki",
+    "defaults": {
+      "aspectRatio": "16/9",
+      "canvasWidth": 980,
+      "colorSchema": "light",
+      "transition": "fade",
+      "fonts": {
+        "sans": "Figtree",
+        "mono": "JetBrains Mono",
+        "weights": "400,500,600,700,800",
+        "provider": "google"
+      },
+      "themeConfig": {
+        "brand": "appliance.io",
+        "logo": ""
+      },
+      "routerMode": "hash"
+    }
+  }
+}

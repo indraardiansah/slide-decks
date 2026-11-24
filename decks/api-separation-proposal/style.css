@@ -1,0 +1,234 @@
+/* Deck-specific styles. Slidev loads style.css from the deck folder automatically. */
+
+/* ---------- Shared ---------- */
+
+/* `class: fill` makes the slide body a column, so `.push-bottom` can sit at the
+   bottom of the slide instead of leaving the lower third empty. */
+.slidev-layout.fill .aio-content {
+  display: flex;
+  flex-direction: column;
+}
+.slidev-layout.fill .push-bottom { margin-top: auto; }
+/* main block that takes the free space and sits in its middle */
+.slidev-layout.fill .grow-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem 0;
+}
+
+/* Simulation slide needs the room, so the title is smaller */
+.slidev-layout.sim-slide {
+  padding-top: 1.6rem;
+  padding-bottom: 2.2rem;
+}
+.slidev-layout.sim-slide h1 {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Cover: the proposal title is long, so make it a bit smaller and wider */
+.slidev-layout.cover.cover-wide h1 { font-size: 3.2rem; }
+.slidev-layout.cover-wide .aio-content { max-width: 78%; }
+
+/* ---------- Problem slide ---------- */
+
+.share-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--aio-muted);
+  margin-bottom: 0.45rem;
+}
+.share-bar {
+  display: flex;
+  height: 3rem;
+  border-radius: 12px;
+  overflow: hidden;
+  animation: share-grow 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: left center;
+}
+.share-web {
+  flex: 0 0 95%;
+  background: var(--aio-purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-left: 1.1rem;
+  font-size: 1rem;
+}
+.share-web b { font-size: 1.45rem; font-weight: 800; }
+.share-pos { flex: 1; background: var(--aio-blue); border-left: 3px solid #fff; }
+.share-legend {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  margin-top: 0.45rem;
+}
+.share-legend .dot { width: 0.65rem; height: 0.65rem; border-radius: 999px; background: var(--aio-blue); }
+@keyframes share-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* three facts in columns, divided by rules instead of boxed in cards */
+.problem-stats > * { padding: 0 1.6rem; border-left: 1px solid var(--aio-line); }
+.problem-stats > *:first-child { padding-left: 0; border-left: 0; }
+.problem-stats .aio-stat .aio-stat-value { font-size: 3rem; }
+.problem-stats .aio-stat .aio-stat-note { font-size: 0.82rem; line-height: 1.45; }
+
+.problem-quote {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--aio-ink);
+  border-left: 4px solid var(--aio-purple);
+  padding-left: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Proposed solution slide ---------- */
+
+.change-col { border-top: 3px solid var(--aio-line); padding-top: 0.6rem; }
+.change-col.changes { border-top-color: var(--aio-purple); }
+.change-col h3 { font-size: 1rem; font-weight: 800; margin: 0 0 0.3rem; }
+.change-col ul { margin: 0; }
+.change-col li { font-size: 0.88rem; line-height: 1.6; }
+.change-col li::before { top: 0.62em; }
+.change-col.stays li::before { background: #b5b5b5; }
+
+/* ---------- Servers slide ---------- */
+
+.spec-note {
+  padding-top: 0.8rem;
+  font-size: 0.66rem;
+  line-height: 1.5;
+  color: var(--aio-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Business impact slide ---------- */
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.1rem;
+}
+
+/* the one strong panel on this slide: solid brand purple */
+.impact-main {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  background: var(--aio-purple);
+  color: #fff;
+}
+/* the brand's amber ring, peeking from the panel corner */
+.impact-main::after {
+  content: '';
+  position: absolute;
+  right: -3.4rem;
+  top: -3.4rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 999px;
+  border: 1.4rem solid var(--aio-amber);
+  opacity: 0.9;
+}
+.im-label { font-size: 0.75rem; font-weight: 700; opacity: 0.85; }
+.im-title { font-size: 1.6rem; font-weight: 800; line-height: 1.2; margin: 0.25rem 0 0.6rem; max-width: 80%; }
+.impact-main p { font-size: 0.9rem; line-height: 1.5; margin: 0 0 0.45rem; opacity: 0.95; max-width: 88%; }
+
+.impact-side { display: grid; gap: 0.7rem; }
+.is-item { border-left: 4px solid var(--aio-line); padding: 0.35rem 0 0.35rem 0.95rem; }
+.is-item.cost { border-left-color: var(--aio-blue); }
+.is-item.growth { border-left-color: var(--aio-amber); }
+.is-label { font-size: 0.68rem; font-weight: 700; color: var(--aio-muted); margin-bottom: 0.1rem; }
+.is-value { font-size: 1.65rem; font-weight: 800; line-height: 1.15; color: var(--aio-blue); }
+.is-value span { font-size: 0.85rem; font-weight: 600; color: var(--aio-muted); }
+.is-title { font-size: 1.02rem; font-weight: 800; line-height: 1.25; }
+.is-text { font-size: 0.8rem; line-height: 1.45; color: var(--aio-muted); margin-top: 0.1rem; }
+
+.impact-limit {
+  font-size: 0.85rem;
+  color: var(--aio-muted);
+  border-left: 4px solid var(--aio-amber);
+  padding-left: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.impact-limit b { color: var(--aio-ink); }
+
+/* ---------- Migration plan slide ---------- */
+
+.flow-note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--aio-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Decision slide ---------- */
+
+.ask {
+  min-height: 11.5rem;
+  border-radius: 14px;
+  border: 1.5px solid var(--aio-line);
+  padding: 1.1rem 1.2rem 1.2rem;
+  animation: ask-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ask:nth-child(2) { animation-delay: 0.1s; }
+.ask:nth-child(3) { animation-delay: 0.2s; }
+.ask.purple { border-color: var(--aio-purple); background: var(--aio-purple-tint); }
+.ask.amber { border-color: var(--aio-amber); background: var(--aio-amber-tint); }
+.ask.blue { border-color: var(--aio-blue); background: var(--aio-blue-tint); }
+.ask-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
+.ask-num {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #fff;
+}
+.purple .ask-num { background: var(--aio-purple); }
+.amber .ask-num { background: var(--aio-amber-strong); }
+.blue .ask-num { background: var(--aio-blue); }
+.ask-verb { font-size: 0.8rem; font-weight: 800; }
+.purple .ask-verb { color: var(--aio-purple); }
+.amber .ask-verb { color: var(--aio-amber-strong); }
+.blue .ask-verb { color: var(--aio-blue); }
+.ask-title { font-size: 1.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+.ask-text { font-size: 0.88rem; line-height: 1.5; color: var(--aio-ink); }
+
+.in-return {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: 14px;
+  background: var(--aio-surface);
+  border: 1px solid var(--aio-line);
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  animation: ask-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+.ir-label { font-size: 0.8rem; font-weight: 800; color: var(--aio-purple); padding-right: 0.2rem; }
+.ir-item b { font-weight: 800; }
+.ir-sep { width: 1px; align-self: stretch; background: var(--aio-line); }
+
+@keyframes ask-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .share-bar, .ask, .in-return { animation: none; }
+}
+
+/* the start date in the decision subtitle */
+.slidev-layout h1 + p b { color: var(--aio-ink); font-weight: 800; }

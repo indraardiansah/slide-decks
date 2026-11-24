@@ -1,0 +1,218 @@
+/* ------------------------------------------------------------------
+ * Appliance.io Slidev theme
+ * Colours sampled from the "November All Hands" Canva deck.
+ * ------------------------------------------------------------------ */
+
+:root {
+  --aio-purple: #b645bf;
+  --aio-purple-tint: #f5e8f7;
+  --aio-amber: #ffbe15;
+  --aio-amber-strong: #c58a00;
+  --aio-amber-tint: #fff4cc;
+  --aio-blue: #4d6ef5;
+  --aio-blue-tint: #e6ecfe;
+  --aio-pink: #c96592;
+  --aio-orange: #e7974c;
+  --aio-gold: #fcb91b;
+
+  --aio-ink: #3a3a3a;
+  --aio-muted: #6b6b6b;
+  --aio-line: #e7e7e7;
+  --aio-surface: #f7f7f7;
+  --aio-bg: #ffffff;
+
+  /* Title gradient used on "Company Growth Recap", "Thank You!" etc. */
+  --aio-gradient: linear-gradient(90deg, #b645bf 0%, #c96592 38%, #e7974c 72%, #fcb91b 100%);
+  /* Extra variants built from the same palette */
+  --aio-gradient-cool: linear-gradient(90deg, #4d6ef5 0%, #8a58d6 50%, #b645bf 100%);
+  --aio-gradient-full: linear-gradient(90deg, #4d6ef5 0%, #b645bf 40%, #e7974c 75%, #fcb91b 100%);
+
+  --slidev-theme-primary: var(--aio-purple);
+  --slidev-slide-container-background: var(--aio-bg);
+}
+
+/* ---------- Gradient text ---------- */
+
+.text-gradient,
+.text-gradient-cool,
+.text-gradient-full {
+  background-image: var(--aio-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.text-gradient-cool { background-image: var(--aio-gradient-cool); }
+.text-gradient-full { background-image: var(--aio-gradient-full); }
+
+/* Headings with a gradient shrink to the text width so the whole
+   gradient is visible, not just its left part. */
+h1.text-gradient, h2.text-gradient, h3.text-gradient,
+h1.text-gradient-cool, h2.text-gradient-cool, h3.text-gradient-cool,
+h1.text-gradient-full, h2.text-gradient-full, h3.text-gradient-full {
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* ---------- Base typography ---------- */
+
+.slidev-layout {
+  color: var(--aio-ink);
+  background: var(--aio-bg);
+  font-family: var(--slidev-fonts-sans, 'Figtree'), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.05rem;
+  position: relative;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.slidev-layout h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.08em; /* keeps descenders inside the gradient clip */
+}
+.slidev-layout h2 { font-size: 1.75rem; }
+.slidev-layout h3 { font-size: 1.3rem; }
+.slidev-layout h4 { font-size: 1.1rem; }
+
+.slidev-layout h1 + p {
+  margin-top: 0;
+  color: var(--aio-muted);
+  opacity: 1;
+}
+
+.slidev-layout p { line-height: 1.55; }
+
+.slidev-layout strong,
+.slidev-layout b { font-weight: 700; }
+
+.slidev-layout ul { list-style: none; padding-left: 0; }
+.slidev-layout ul > li { position: relative; padding-left: 1.1em; margin-left: 0; }
+.slidev-layout ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 999px;
+  background: var(--aio-purple);
+}
+.slidev-layout ol > li::marker { color: var(--aio-purple); font-weight: 700; }
+
+.slidev-layout a {
+  color: var(--aio-blue);
+  border-color: currentColor;
+}
+
+.slidev-layout blockquote {
+  background: var(--aio-purple-tint);
+  color: var(--aio-ink);
+  border-left: 4px solid var(--aio-purple);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.slidev-layout table { font-size: 0.9rem; }
+.slidev-layout tr { border-color: var(--aio-line); }
+.slidev-layout th {
+  font-weight: 700;
+  color: var(--aio-muted);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.slidev-layout code:not(pre code) {
+  background: var(--aio-surface);
+  color: var(--aio-purple);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+.slidev-layout pre {
+  border-radius: 10px;
+}
+
+/* ---------- Shared pieces ---------- */
+
+.aio-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--aio-purple);
+  margin-bottom: 0.35rem;
+}
+
+.aio-subtitle {
+  color: var(--aio-muted);
+  font-size: 1.05rem;
+  margin-top: 0.25rem;
+}
+
+/* Content sits above the decorative shapes */
+.aio-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Layout specifics ---------- */
+
+.slidev-layout.cover h1,
+.slidev-layout.section h1,
+.slidev-layout.end h1 {
+  line-height: 1.12;
+}
+
+.slidev-layout.cover h1 { font-size: 4rem; font-weight: 700; }
+.slidev-layout.section h1 { font-size: 2.9rem; font-weight: 700; }
+.slidev-layout.end h1 { font-size: 7rem; font-weight: 800; line-height: 1; }
+
+.slidev-layout.center h1,
+.slidev-layout.section h1,
+.slidev-layout.fact h1 {
+  margin-inline: auto;
+}
+
+.slidev-layout.fact h1 {
+  font-size: 7rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.slidev-layout.fact h1 + p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--aio-ink);
+}
+
+/* Layouts with `aio-gradient-h1` paint their slide title in the brand
+   gradient. Turn it off per slide with `gradient: false`. */
+.aio-gradient-h1 .aio-content > h1,
+.aio-gradient-h1 .aio-content > .col-header > h1 {
+  background-image: var(--aio-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  max-width: 100%;
+}
+.aio-gradient-h1.end .aio-content > h1 { margin-left: auto; }
+
+/* Slides with a footer section tracker keep their content clear of the footer band */
+.slidev-layout:has(.aio-footer.has-tracker) {
+  padding-bottom: 3.6rem;
+}
